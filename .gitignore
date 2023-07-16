@@ -1,0 +1,14 @@
+logs
+*.log
+npm-debug.log
+
+***/.development*
+**/.idea*
+**/node_modules*
+**/.node_repl_history
+**/.npm*
+
+typings/
+lib/*.js
+test/*.js
+*.map
