@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkNumberOfArgs = exports.getTaxBrackets = exports.parseIncome = exports.printTaxBrackets = void 0;
+exports.checkNumberOfArgs = exports.checkBrackeErrors = exports.parseCustomTaxBracket = exports.getTaxBrackets = exports.parseIncome = exports.printTaxBrackets = void 0;
 const constants_1 = require("./constants");
 function printTaxBrackets(initialTaxBrackets) {
     for (const [key, value] of initialTaxBrackets) {
@@ -33,6 +33,37 @@ function getTaxBrackets(taxYear) {
     return taxBrackets;
 }
 exports.getTaxBrackets = getTaxBrackets;
+function parseCustomTaxBracket(input) {
+    let inputArray = input.split(",");
+    let taxBrackets = new Map();
+    for (let i = 0; i < inputArray.length; i++) {
+        let bracket = inputArray[i].split(":");
+        if (i === inputArray.length - 1) {
+            bracket[0] = Number.MAX_SAFE_INTEGER.toString();
+        }
+        if (checkBrackeErrors(bracket) === true) {
+            throw new Error("Invalid tax bracket format. Correct format is x:y, you submitted " + inputArray[i]);
+        }
+        let key = Number(bracket[0]);
+        let value = Number(bracket[1]);
+        taxBrackets.set(key, value);
+    }
+    return taxBrackets;
+}
+exports.parseCustomTaxBracket = parseCustomTaxBracket;
+function checkBrackeErrors(bracket) {
+    if (bracket.length != 3) {
+        return false;
+    }
+    else if (bracket[1] != ":") {
+        return false;
+    }
+    else if (isNaN(Number(bracket[0])) || isNaN(Number(bracket[2]))) {
+        return false;
+    }
+    return true;
+}
+exports.checkBrackeErrors = checkBrackeErrors;
 function checkNumberOfArgs(args) {
     if (args.length < 2) {
         throw new Error("Please provide correct arguments.");

@@ -9,24 +9,6 @@
 - Clone the repository.
 
 ```
-git clone git@github.com:HamishPoole/RustCompiler.git
-```
-
-- Build using build locally.
-
-```
-source build_locally.sh
-```
-
-- Either install locally via install locally
-
-```
-source install_locally.sh
-```
-
-- Or alias the build binary to vc
-
-```
 alias vc="./vc"
 ```
 
@@ -36,10 +18,4 @@ alias vc="./vc"
 
 ```
 vc parse <filepath>
-```
-
-- Parse, and print out the original file from the abstract syntax tree using unparse.
-
-```
-vc unparse <filepath>
 ```

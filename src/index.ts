@@ -2,7 +2,7 @@
 
 import {helpMessage, initialTaxBrackets, inputFormatMessage} from "./constants";
 import {checkNumberOfArgs, getTaxBrackets, parseIncome, printTaxBrackets} from "./utils";
-import {calculateGrossTax} from "./calculation";
+import {calculateGrossTax} from "./calculations";
 
 
 let args: string[] = process.argv.slice(2);
@@ -33,7 +33,10 @@ switch (args[0]) {
         break
     case "calculate-custom-year":
         console.log("Calculating tax rates with a custom year.");
-        // Your logic for calculating tax goes here
+        checkNumberOfArgs(args);
+        let customIncome = parseIncome(args[1]);
+        let customTaxBracket = getTaxBrackets(args[2]);
+        let grossTax = calculateGrossTax(customIncome, customTaxBracket);
         process.exit(0);
         break;
     default:

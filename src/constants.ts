@@ -52,7 +52,7 @@ export const initialTaxBrackets = new Map<string, Map<number, number>>([
 export const helpMessage = `
 Aussie tax calculator calculates the gross tax on your taxable income for a particular financial year.
 
-In layman"s terms, it accepts an income and the relevant tax year, and outputs the amount of tax you will pay.
+In layman's terms, it accepts an income and the relevant tax year, and outputs the amount of tax you will pay.
 
 Calculating using custom tax rates is also supported, allowing tax rates for foreign residents or residents from other 
 countries to calculate their custom rates.
@@ -104,7 +104,6 @@ Tax brackets represent the upper boundaries of a tax bracket.
 Tax brackets rounds to 2 decimal places.  Example, 15000.151251 rounds to 15000.15 
 
 Fractions are fractional decimals between 0 and 1.  e.g. 0.01 (1% tax rate), 0.75 (75% rate rate).
-Fractions will be rounded to 2 decimal places.  e.g, 0.242 is a 24% tax rate.
 A fraction greater than 1 or less than 0 will be invalid.
 
 The final tax bracket supplied becomes the "upper boundary."  

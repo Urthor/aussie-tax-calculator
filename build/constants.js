@@ -102,9 +102,11 @@ Commands:
 exports.inputFormatMessage = `
 Income:
 
-Income will be rounded to 2 decimal places.  e.g. 97804.151251 rounds to 97804.15
-Income should not have a leading dollar sign, comma, or other values.
-Income will apply banker's rounding.  e.g. 0.516 rounds to 0.52, 1.5 rounds to 2.
+Income rounds to 2 decimal places.  
+e.g. 97804.151251 rounds to 97804.15
+
+Income should avoid leading dollar signs, comma, or other characters.
+Income is rounded via banker's rounding.  e.g. 0.516 rounds to 0.52, 1.5 rounds to 2.
  
 Tax Year:
 
