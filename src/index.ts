@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-let args: string[] = process.argv.slice(2);
-
 const helpMessage = `
 Usage: node your-app [command]
 
@@ -13,7 +11,8 @@ For more information on a specific command, use:
   node your-app [command] --help
 `;
 
-// If no command is provided, or if the command is `--help`, display the help message
+let args: string[] = process.argv.slice(2);
+
 if (args.length === 0 || args[0] === '--help') {
     console.log(helpMessage);
     process.exit(0);
