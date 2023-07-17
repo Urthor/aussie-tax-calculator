@@ -1,38 +1,38 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sum = void 0;
+const constants_1 = require("./constants");
+const utils_1 = require("./utils");
+const calculation_1 = require("./calculation");
 let args = process.argv.slice(2);
-const helpMessage = `
-Usage: node your-app [command]
-
-Commands:
-  set-tax-rates: Set tax rates
-  calculate-tax: Calculate tax
-
-For more information on a specific command, use:
-  node your-app [command] --help
-`;
-// If no command is provided, or if the command is `--help`, display the help message
-if (args.length === 0 || args[0] === '--help') {
-    console.log(helpMessage);
+if (args.length === 0 || args[0] === "--help") {
+    console.log(constants_1.helpMessage);
     process.exit(0);
 }
-// Determine which command to run
 switch (args[0]) {
-    case 'set-tax-rates':
-        console.log('Setting tax rates...');
-        // Your logic for setting tax rates goes here
+    case "view-tax-rates":
+        (0, utils_1.printTaxBrackets)(constants_1.initialTaxBrackets);
+        process.exit(0);
         break;
-    case 'calculate-tax':
-        console.log('Calculating tax...');
+    case "view-input-format":
+        console.log(constants_1.inputFormatMessage);
+        process.exit(0);
+        break;
+    case "calculate-tax":
+        console.log("Calculating tax rates.");
+        (0, utils_1.checkNumberOfArgs)(args);
+        let income = (0, utils_1.parseIncome)(args[1]);
+        let tax_brackets = (0, utils_1.getTaxBrackets)(args[2]);
+        let gross_tax = (0, calculation_1.calculateGrossTax)(income, tax_brackets);
+        console.log(gross_tax);
+        process.exit(0);
+        break;
+    case "calculate-custom-year":
+        console.log("Calculating tax rates with a custom year.");
         // Your logic for calculating tax goes here
+        process.exit(0);
         break;
     default:
-        console.log(`Unknown command: ${args[0]}`);
-        console.log(helpMessage);
+        console.log(constants_1.helpMessage);
+        process.exit(0);
 }
-function sum(a, b) {
-    return a + b;
-}
-exports.sum = sum;
